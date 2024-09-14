@@ -25,7 +25,7 @@
             const storedKey = localStorage.getItem('storedKey'); // Retrieve only, do not set it
             
             if (storedKey === null) {
-                alert("No key is stored in localStorage. Please set a key first.");
+                alert("you are not an approved user. Contact hosting team");
             } else if (userKey === storedKey) {
                 document.getElementById('content').style.display = 'block';
                 console.log("Correct key entered!");
