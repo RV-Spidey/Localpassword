@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save Key to Local Storage</title>
+    <title>Key Check</title>
+    <style>
+        #content {
+            display: none; /* Hide content initially */
+        }
+    </style>
 </head>
 <body>
-    <h1>Key Saved to Local Storage on Page Load</h1>
+    <h1>Enter Key to Access Website</h1>
+    
+    <div id="keyInputSection">
+        <input type="text" id="userKey" placeholder="Enter your key">
+        <button onclick="checkKey()">Submit</button>
+    </div>
+
+    <div id="content">
+        <h1>Welcome to the Website!</h1>
+        <p>This content is only visible if the correct key is entered.</p>
+    </div>
 
     <script>
-        window.onload = function() {
-            const predefinedKey = "skibidi"; // Change this to your desired key
-            localStorage.setItem('storedKey', predefinedKey);
-            console.log("Predefined key saved to localStorage!");
-        };
+        // Function to check if the entered key matches the one stored in localStorage
+        function checkKey() {
+            const userKey = document.getElementById('userKey').value;
+            const storedKey = localStorage.getItem('storedKey'); // Retrieve only, do not set it
+            
+            if (storedKey === null) {
+                alert("No key is stored in localStorage. Please set a key first.");
+            } else if (userKey === storedKey) {
+                document.getElementById('keyInputSection').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                console.log("Correct key entered!");
+            } else {
+                alert("Incorrect key, please try again.");
+            }
+        }
     </script>
 </body>
 </html>
