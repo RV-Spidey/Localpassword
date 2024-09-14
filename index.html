@@ -14,8 +14,7 @@
     <h1>Enter Key to Access Website</h1>
     
     <div id="keyInputSection">
-        <input type="text" id="userKey" placeholder="Enter your key">
-        <button onclick="checkKey()">Submit</button>
+        <button onclick="checkKey()">Enter Key</button>
     </div>
 
     <div id="content">
@@ -26,7 +25,7 @@
     <script>
         // Function to check if the entered key matches the one stored in localStorage
         function checkKey() {
-            const userKey = document.getElementById('userKey').value;
+            const userKey = prompt("Please enter your key:");
             const storedKey = localStorage.getItem('storedKey'); // Retrieve only, do not set it
             
             if (storedKey === null) {
