@@ -11,14 +11,10 @@
     </style>
 </head>
 <body>
-    <h1>Enter Key to Access Website</h1>
+    <h1>Welcome to the Website</h1>
     
-    <div id="keyInputSection">
-        <button onclick="checkKey()">Enter Key</button>
-    </div>
-
     <div id="content">
-        <h1>Welcome to the Website!</h1>
+        <h1>Access Granted!</h1>
         <p>This content is only visible if the correct key is entered.</p>
     </div>
 
@@ -31,13 +27,16 @@
             if (storedKey === null) {
                 alert("No key is stored in localStorage. Please set a key first.");
             } else if (userKey === storedKey) {
-                document.getElementById('keyInputSection').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
                 console.log("Correct key entered!");
             } else {
                 alert("Incorrect key, please try again.");
+                window.location.reload(); // Reload the page to prompt again
             }
         }
+
+        // Automatically call checkKey when the page loads
+        window.onload = checkKey;
     </script>
 </body>
 </html>
