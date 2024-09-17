@@ -26,6 +26,7 @@
         <input type="text" id="nameInput" placeholder="Your name here" required>
         <input type="submit" value="Submit">
     </form>
+	<p id="greetingMessage"></p>
     <script>
         window.onload = function() {
             /*const r = 2;
@@ -90,6 +91,17 @@ setCookie('_____________________________________________________________________
                     document.getElementById('nameInput').value = ''; // Clear the input field
                 }
             });
+		
+function displayGreeting() {
+    const name = localStorage.getItem('userName'); // Retrieve the name from localStorage
+    const greetingMessage = document.getElementById('greetingMessage'); // Get the placeholder element
+    if (name) {
+        greetingMessage.textContent = `Hello, ${name}!`; // Display the name in the placeholder element
+    }
+}
+
+// Call displayGreeting on page load to show the name if it exists
+window.addEventListener('load', displayGreeting);
 
         };
     </script>
