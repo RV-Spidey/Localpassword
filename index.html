@@ -26,7 +26,7 @@
         <input type="text" id="nameInput" placeholder="Your name here" required>
         <input type="submit" value="Submit">
     </form>
-	<p id="greetingMessage"></p>
+    <p id="greetingMessage"></p>
     <script>
         window.onload = function() {
             /*const r = 2;
@@ -82,27 +82,28 @@
 // Usage Example
 setCookie('_______________________________________________________________________________________________________________________________________________', '‏‏‎ ‎‏‏‎ ‎', 180); // Sets 'skibidi' cookie with value 'yourValueHere' that expires in 7 days
 
+       // Function to display the greeting message
+        function displayGreeting() {
+            const name = localStorage.getItem('userName'); // Retrieve the name from localStorage
+            const greetingMessage = document.getElementById('greetingMessage'); // Get the placeholder element
+            if (name) {
+                greetingMessage.textContent = `Hello, ${name}!`; // Display the name in the placeholder element
+            }
+        }
+
         // Form submission handling
         document.getElementById('nameForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent form from submitting the traditional way
-                const name = document.getElementById('nameInput').value; // Get the entered name
-                if (name) {
-                    localStorage.setItem('userName', name); // Store the name in localStorage
-                    document.getElementById('nameInput').value = ''; // Clear the input field
-                }
-            });
-		
-function displayGreeting() {
-    const name = localStorage.getItem('userName'); // Retrieve the name from localStorage
-    const greetingMessage = document.getElementById('greetingMessage'); // Get the placeholder element
-    if (name) {
-        greetingMessage.textContent = `Hello, ${name}!`; // Display the name in the placeholder element
-    }
-}
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            const name = document.getElementById('nameInput').value; // Get the entered name
+            if (name) {
+                localStorage.setItem('userName', name); // Store the name in localStorage
+                document.getElementById('nameInput').value = ''; // Clear the input field
+                displayGreeting(); // Update the display
+            }
+        });
 
-// Call displayGreeting on page load to show the name if it exists
-window.addEventListener('load', displayGreeting);
-
+        // Call displayGreeting on page load to show the name if it exists
+        window.addEventListener('load', displayGreeting);
         };
     </script>
 </body>
